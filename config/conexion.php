@@ -1,7 +1,8 @@
 <?php
 $conn = mysqli_connect("localhost", "root", "", "alumnos");
-if(!$conn){
-    die("Conexion fallida: " . my_sqli_connect_error());
+$conn = new mysqli("localhost", "root", "", "alumnos");
+if($conn->connect_error){
+    die("Conexion fallida: " . $conn->connect_error);
 }
 //echo "Conexion exitosa";
 
