@@ -8,7 +8,12 @@ class Materias{
     }
     //Traemos todas las materias para mostrarlas
     public function obtenerTodas(){
-        $resultado = this->conn->query("SELECT * FROM materias");
+        $sql = "SELECT m.idMateria, m.mat_nombre AS mat_nombre, m.mat_anio, e.est_nombre AS est_nombre 
+        FROM materias m
+        INNER JOIN estados e ON m.idEstado = e.idEstado
+        WHERE m.mat_activo = 1;";
+
+        $resultado = this->conn->query($sql);
         $materias = [];
         while($fila = $resultado->fetch_assoc()){
             $materias[] = $fila; //Agregamos materia en el array, cada elemento es una fila.
@@ -40,7 +45,7 @@ class Materias{
     }
     //Eliminamos una materia
     public function eliminar($id){
-        $stmt = $this->conn->prepare("DELETE FROM materias WHERE idMateria = ?");
+        $stmt = $this->conn->prepare("UPDATE materias SET mat_activo = 0 WHERE idMateria = ?");
         $stmt->bindParam("i", $id);
         return $stmt->execute();
     }
