@@ -2,7 +2,7 @@
 <div class="container mt-5">
         <h2 class="mb-4">Editar Materia</h2>
 
-        <!-- Ahora en action pongo la parte del controlador que se encarga del editar.-->
+        <!-- actualizar va a ser el metodo que tengo que agregar en el controlador de Materia-->
         <form action="index.php?action=actualizar" method="POST" style="max-width: 500px;">
 
             <!-- Pasamos el id de la materia a actualizar para poder traer sus datos. -->
