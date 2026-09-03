@@ -1,34 +1,41 @@
 <?php
+session_start();
+require_once("../controllers/AuthController.php");
 require_once("../controllers/MateriaController.php");
 require_once("../config/conexion.php");
 
-$controller = new MateriaController($conn);
+
+$materiaController = new MateriaController($conn);
+$authController= new AuthController($conn);
 $action = $_GET["action"] ?? "login";
 switch ($action){
     case "login":
         if ($_SERVER['REQUEST_METHOD'] === 'POST'){
             $authController->login();
         }else{
-            $authController->showLogin();
+            $authController->mostrarLogin();
         }
         break;
     case "index":
-        $controller->index();
+        $materiaController->index();
         break;
     case "crear":
-        $controller->crear();
+        $materiaController->crear();
         break;
     case "guardar":
-        $controller->guardar();
+        $materiaController->guardar();
         break;
     case "editar":
-        $controller->editar();
+        $materiaController->editar();
         break;
     case "actualizar":
-        $controller->actualizar();
+        $materiaController->actualizar();
         break;
     case "eliminar":
-        $controller->eliminar();
+        $materiaController->eliminar();
+        break;
+    case "logout":
+        $authController->logout();
         break;
 }
 ?>
