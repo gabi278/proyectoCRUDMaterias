@@ -1,6 +1,6 @@
 <?php
-require_once('models/Estado.php');
-require_once('models/Materia.php');
+require_once('../models/Estado.php');
+require_once('../models/Materia.php');
 
 class MateriaController{
     private $modeloMateria;
@@ -13,25 +13,25 @@ class MateriaController{
 
     public function index(){
         $materias = $this->modeloMateria->obtenerTodas();
-        require_once('views/materias/index.php');
+        require_once('../views/materias/index.php');
     }
 
     public function crear(){
         $estados = $this->modeloEstado->obtenerTodos();
-        require_once('views/materias/crear.php');
+        require_once('../views/materias/crear.php');
     }
 
     public function actualizar(){
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-            $idMateria = $_POST['idMateria'];
-            $nombre = $_POST['nombre'];
-            $anio = $_POST['anio'];
-            $idEstado = $_POST['idEstado'];
+            $idMateria =(int) $_POST['idMateria'];
+            $nombre = trim($_POST['nombre']);
+            $anio =(int) $_POST['anio'];
+            $idEstado =(int) $_POST['idEstado'];
             if (empty($nombre)) {
                 die("Error de seguridad: El nombre no puede estar vacío.");
             }
-            if ($anio < 1 || $anio > 5) {
-                die("Error de seguridad: El año debe estar entre 1 y 5.");
+            if ($anio < 1 || $anio > 7) {
+                die("Error de seguridad: El año debe estar entre 1 y 7.");
             }
             if ($idEstado <= 0) {
                 die("Error de seguridad: Estado inválido.");
@@ -43,9 +43,9 @@ class MateriaController{
 
     public function guardar(){
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-            $nombre = $_POST['nombre'];
-            $anio = $_POST['anio'];
-            $idEstado = $_POST['idEstado'];
+            $nombre =trim($_POST['nombre']);
+            $anio =(int) $_POST['anio'];
+            $idEstado =(int) $_POST['idEstado'];
 
             if (empty($nombre)) {
                 die('Error: el nombre de la materia no puede estar vacio.');
@@ -67,7 +67,7 @@ class MateriaController{
         $id = $_GET['id'];
         $materia = $this->modeloMateria->obtenerPorId($id);
         $estados = $this->modeloEstado->obtenerTodos();
-        require_once('views/materias/editar.php');
+        require_once('../views/materias/editar.php');
     }
 
     public function eliminar(){

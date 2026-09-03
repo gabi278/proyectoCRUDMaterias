@@ -9,7 +9,3 @@
 </head>
 
 <body>
-    <nav>
-        <a href="index.php?action=index">Listado</a>
-        <a href="index.php?action=create">Nueva materia</a>
-    </nav>
