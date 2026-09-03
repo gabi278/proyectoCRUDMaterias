@@ -13,13 +13,13 @@ class AuthController
 
     public function mostrarLogin()
     {
-        //El profe usa session para las cookies? Buscar que hace esa variable
-        if (isset($_SESSION['rol']))
+        //Es una variable de sesion, en ella podemos guardar info de variables de sesion.
+        //Para utilizarla tenemos que utilizar session_start().
+        if (isset($_SESSION['usuario_rol']))
         {
             header("Location: index.php");
             exit();
         }
-        $error = "";
         require_once("../views/auth/login.php");
     }
 

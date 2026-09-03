@@ -11,10 +11,13 @@
 
                 <div class="card-body p-4">
                     <!-- Msj de error -->
-                    <?php if (!empty($error)): ?>
+                    <?php if (isset($_SESSION['login_error'])): ?>
                         <div class="alert alert-danger" role="alert">
-                            <?= htmlspecialchars($error) ?>
+                            <?= htmlspecialchars($_SESSION['login_error']) ?>
                         </div>
+                        <?php //Borramos el error para que no aparezca si recargamos la pagina.
+                            unset($_SESSION['login_error']);
+                        ?>
                     <?php endif; ?>
 
                     <form method="POST" action="index.php?action=login">
