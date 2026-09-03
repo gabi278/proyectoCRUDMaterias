@@ -52,5 +52,7 @@
     </div>
 </div>
 
-
+<script>
+    
+</script>
 <?php require __DIR__ . ("/../layouts/footer.php") ?>
