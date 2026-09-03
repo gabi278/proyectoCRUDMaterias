@@ -3,8 +3,15 @@ require_once("../controllers/MateriaController.php");
 require_once("../config/conexion.php");
 
 $controller = new MateriaController($conn);
-$action = $_GET["action"] ?? "index";
-switch ($action) {
+$action = $_GET["action"] ?? "login";
+switch ($action){
+    case "login":
+        if ($_SERVER['REQUEST_METHOD'] === 'POST'){
+            $authController->login();
+        }else{
+            $authController->showLogin();
+        }
+        break;
     case "index":
         $controller->index();
         break;
