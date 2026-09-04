@@ -47,7 +47,7 @@
             </div>
 
             <button type="submit" class="btn btn-warning">Guardar Cambios</button>
-            <a href="index.php" class="btn btn-secondary">Cancelar</a>
+            <a href="index.php?action=index" class="btn btn-secondary">Cancelar</a>
 
         </form>
     </div>
