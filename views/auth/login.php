@@ -53,6 +53,23 @@
 </div>
 
 <script>
-    
+    //Funcion para que el msj de error desaparezca luego de 3 segundos
+    document.addEventListener("DOMContentLoaded", function(){
+        const alerta = document.querySelector('.alert');
+        if(alerta){
+            function borrarElemento(){
+                //Eliminamos la etiqueta div del error en el html
+                alerta.remove();
+            }
+            function desvanecerAlerta(){
+                //Animacion que hace que el msj de error se desvanezca
+                alerta.style.transition = "opacity 0.5s ease";
+                alerta.style.opacity = "0";
+
+                setTimeout(borrarElemento, 500);
+            }
+            setTimeout(desvanecerAlerta, 3000);
+        }
+    })
 </script>
 <?php require __DIR__ . ("/../layouts/footer.php") ?>

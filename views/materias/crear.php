@@ -2,9 +2,9 @@
 
     <div class="container mt-5">
         <h2 class="mb-4">Agregar Nueva Materia</h2>
-
+        <div id="msjError" class="alert alert-danger d-none" role="alert"></div>
         <!--  -->
-        <form action="index.php?action=guardar" method="POST" style="max-width: 500px;">
+        <form id="formMateria" action="index.php?action=guardar" method="POST" style="max-width: 500px;">
 
             <!--Nombre-->
             <div class="mb-3">
@@ -48,8 +48,20 @@
 
         </form>
     </div>
-
-
+    <script>
+        const formulario = document.getElementById('formMateria');
+        if(formMateria){
+            formMateria.addEventListener('submit', function(e){
+                let nombre = document.getElementById('nombre').value.trim();
+                let divError = document.getElementById('msjError');
+                if(nombre.length < 5){
+                    e.preventDefault();
+                    divError.textContent = "El nombre de la materia debe tener al menos 5 letras.";
+                    divError.classList.remove('d-none'); //Sacamos la clase d-none (display:none en bootstrap.)
+                }
+            });
+        }
+    </script>
 
 
 
